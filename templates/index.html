@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block context %}
+<form method="GET" class="d-flex mt-2"  role="search">
+  <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+  <div class="row">
+  {% for product in products %}
+    <div class="card ms-4 mt-4" style="width: 18rem;">
+      <img src="{{ product.image.url }}" class="card-img-top mt-4" alt="Image">
+        <div class="card-body">
+          <h5 class="card-title   product_background">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">{{ product.cost }} </p>
+          <a class="btn btn-primary" href="  {% url 'details' product.id %} " role="button">Details</a>
+
+        </div>
+      </div>
+  {% endfor %}
+  </div>
+    
+  <nav class="mt-4"  aria-label="Page navigation example">
+    <ul class="pagination justify-content-center" >
+      {% if products.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a></li>
+      {% endif %}
+      {% for page in page_range %}        
+        {% if page == products.number %}
+          <li class="page-item"><b class="page-link" >{{ page }}</b></li>  
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>  
+        {% endif %}
+      {% endfor %}
+      {% if products.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endblock context %}

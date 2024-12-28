@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+
+<div class="container ">
+    {% block context %}
+        <div class="card ms-4 mt-4" style="width: 18rem;">
+            <img src="{{ product.image.url }}" class="card-img-top mt-4" alt="Image">
+            <div class="card-body">
+                <h5 class="card-title" >{{ detail.name }}</h5>
+                <p class="card-text">{{ detail.description }}</p>
+                <p class="card-text">{{ detail.cost }} </p>
+                
+                </div>
+            </div>
+        </div>
+    {% endblock context %}
+</div>

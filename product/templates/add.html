@@ -1,0 +1,11 @@
+{% extends "layouts/base.html" %}
+
+{% block context %}
+<form method="POST" class="mt-4" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Submit</button>   
+</form>
+
+{% endblock context %}

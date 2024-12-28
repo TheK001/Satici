@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+
+{% block context %}
+
+<form method="POST" class="mt-4" enctype="multipart/form">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="name" value="{{ product.name }}">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Cost</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" name="cost" placeholder="cost" value="{{ product.cost }}">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="description">{{ product.description }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">file input</label>
+        <input class="form-control" type="file" id="formFile">
+    </div>
+    
+    
+        <button type="submit" class="btn btn-primary">Submit</button>   
+</form>
+    
+
+
+{% endblock context %}
+
+
