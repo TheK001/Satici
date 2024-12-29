@@ -1,6 +1,6 @@
 from django.urls import path,include
-from . import veiws
+from . import views
 
 urlpatterns = [
-    path('all-products/', veiws.list_product_api_view, name='all-products')
+    path('all-products/', views.ProductListCreateGenericView.as_view(), name='all-products')
 ]
