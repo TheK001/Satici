@@ -1,13 +1,16 @@
 from rest_framework import serializers
 from product.models import Product
 
-class ProductSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField()
-    cost = serializers.IntegerField()
-    description = serializers.CharField()
-    image = serializers.ImageField()
-
+class ProductSerializer(serializers.ModelSerializer):
+    # id = serializers.IntegerField(read_only=True)
+    # name = serializers.CharField()
+    # cost = serializers.IntegerField()
+    # description = serializers.CharField()
+    # image = serializers.ImageField()
+    class Meta:
+        model = Product
+        fields = "__all__"
+    # read_only_fields = 
     def create(self, validated_data):
         return Product.objects.create(**validated_data)
     
